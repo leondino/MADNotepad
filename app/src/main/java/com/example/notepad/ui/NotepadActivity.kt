@@ -1,5 +1,6 @@
 package com.example.notepad.ui
 
+import android.content.Intent
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
@@ -27,8 +28,9 @@ class NotepadActivity : AppCompatActivity() {
 
     private fun initViews(){
         fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+            val intent = Intent(this, EditActivity::class.java)
+            intent.putExtra(EditActivity.EXTRA_NOTE, notepadActivityViewModel.note.value)
+            startActivity(intent)
         }
     }
 
